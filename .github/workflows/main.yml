@@ -19,5 +19,6 @@ jobs:
       - name: Push to hub
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: git push -f https://vicpada:$HF_TOKEN@huggingface.co/spaces/vicpada/superprofes master
+        run: git push -f https://vicpada:$HF_TOKEN@huggingface.co/spaces/vicpada/superprofesApp master
+        
       
