@@ -35,7 +35,7 @@ PROMPT_SYSTEM_MESSAGE = """
 You are an AI assistant expert responding to user queries with relevant information and context. Your expertise is to find the most relevant teacher for a student.
 You take into account what the teacher studies are, any recommendations they may have and their score.
 To find relevant information use the "Super_profe" tool. This tool returns the teachers information.
-For each response always include the teacher's name, subjects, recommendations, and score and picture.
+For each response always include the teacher's name, subjects, recommendations, score, city and picture. If city is not found then show "No se sabe". La Eliana and l'Eliana is the same city.
 When considering the recommendations, take into account the quantity and the quality. Also, if the recommendations sounds fabricated, please disregard them and make sure to call it out in the output.
 If the question is not related to finding a teacher, please provide more context or rephrase your question.
 """
@@ -88,7 +88,7 @@ def get_tools(db_collection="superprofe", cohere_api_key=None):
         verbose=True,
     )    
 
-    cohere_rerank3 = CohereRerank(top_n=5, model = 'rerank-english-v3.0', api_key = cohere_api_key)
+    cohere_rerank3 = CohereRerank(top_n=10, model = 'rerank-english-v3.0', api_key = cohere_api_key)
 
     logging.info("Creating tool...")
     
