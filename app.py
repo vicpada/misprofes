@@ -118,7 +118,7 @@ def generate_completion(query, history, memory):
         yield "Error: OpenAI API Key is not set or is invalid. Please provide a valid key."
         return
     
-    llm = OpenAI(temperature=1, model="gpt-4o-mini", api_key=openAI_api_key)
+    llm = OpenAI(temperature=0.2, model="gpt-4o-mini", api_key=openAI_api_key)
     client = llm._get_client()
     logfire.instrument_openai(client)    
 
